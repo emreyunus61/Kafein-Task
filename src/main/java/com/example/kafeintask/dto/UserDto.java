@@ -11,7 +11,7 @@ public class UserDto {
     private int id;
     private String name;
     private String surname;
-    private List<Integer> followerlist;
+    private List<Integer> followerList;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]")
     private LocalDateTime createdat;
 }
