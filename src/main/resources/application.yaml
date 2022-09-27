@@ -1,0 +1,24 @@
+spring:
+  data:
+    cassandra:
+      keyspace-name: test_ks
+      schema-action: CREATE_IF_NOT_EXISTS
+      contact-points: cassandra
+      local-datacenter: datacenter1
+      port: 9042
+      create-keyspace: true
+  kafka:
+    template:
+      default-topic: "follower"
+    consumer:
+      bootstrap-servers: kafka:29092
+      group-id: group_id
+      auto-offset-reset: earliest
+      properties.spring.json.trusted.packages: com.example.kafeintask.*
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+    producer:
+      bootstrap-servers: kafka:29092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
